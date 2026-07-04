@@ -34,11 +34,6 @@ public class ElectricityBillCalculator {
         System.out.print("Rate per kWh: ");
         double r = Double.parseDouble(scanner.nextLine());
 
-        if (scanner.nextLine().equalsIgnoreCase("Exit")) {
-            System.out.println("Exiting...");
-            scanner.close();
-        }
-
         double unitsConsumed = cr - pr;
         double totalBill = unitsConsumed*r;
         double lateFee = totalBill*1.5;
@@ -62,7 +57,6 @@ public class ElectricityBillCalculator {
                 System.out.println(bill);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
-                scanner.nextLine();
             }
         }
 

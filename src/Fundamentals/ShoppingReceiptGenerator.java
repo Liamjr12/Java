@@ -30,7 +30,7 @@ public class ShoppingReceiptGenerator {
             double valueAddedTax = Double.parseDouble(scanner.nextLine());
             double tax = valueAddedTax/100;
 
-            System.out.println("===== RECEIPT =====");
+            System.out.println("\n===== RECEIPT =====");
 
             double DiscountAmount = (itemPrice*itemQuantity) * (1-dp);
             System.out.println("Discount amount: " + DiscountAmount);
