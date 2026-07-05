@@ -284,8 +284,3 @@ System.out.println(a >>> 1); // 0
 ```
 
 <hr>
-
-# Projects
-* Fundamentals
-    * Task_1
-        * 

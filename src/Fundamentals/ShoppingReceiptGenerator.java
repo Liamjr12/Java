@@ -8,6 +8,7 @@ public class ShoppingReceiptGenerator {
         Scanner scanner = new Scanner(System.in);
 
         try {
+
             System.out.print("Product name: ");
             String productName = scanner.nextLine();
 

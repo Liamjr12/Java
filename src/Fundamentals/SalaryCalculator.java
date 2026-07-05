@@ -9,6 +9,7 @@ public class SalaryCalculator {
         final double m = 1.5;
 
         try {
+            
             System.out.print("Hourly rate: ");
             double r = Double.parseDouble(scanner.nextLine());
 
@@ -37,5 +38,7 @@ public class SalaryCalculator {
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
         }
+
     }
+
 }

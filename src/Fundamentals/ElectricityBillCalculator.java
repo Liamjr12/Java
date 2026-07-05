@@ -52,13 +52,18 @@ public class ElectricityBillCalculator {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+
             try {
+
                 String bill = ElectricityBillCalculator.displayBill(scanner);
                 System.out.println(bill);
+
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
             }
+
         }
 
     }
+
 }

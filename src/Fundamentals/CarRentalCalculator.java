@@ -3,6 +3,7 @@ package Fundamentals;
 import java.util.Scanner;
 
 public class CarRentalCalculator {
+    
     enum CarType {
         SEDAN, SUV, HATCHBACK, COUPE, CONVERTIBLE, STATION_WAGON, MINIVAN, CROSSOVER, SPORTS_CAR;
     }
@@ -11,26 +12,30 @@ public class CarRentalCalculator {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Car type: ");
-        String type = scanner.nextLine();
-        CarType carType = CarType.valueOf(type);
+        try {
+            System.out.print("Car type: ");
+            String type = scanner.nextLine();
 
-        System.out.print("Days: ");
-        int days = Integer.parseInt(scanner.nextLine());
+            System.out.print("Days: ");
+            int days = Integer.parseInt(scanner.nextLine());
 
-        System.out.print("Insurance: ");
-        double insurance = Double.parseDouble(scanner.nextLine());
+            System.out.print("Insurance: ");
+            double insurance = Double.parseDouble(scanner.nextLine());
 
-        System.out.print("Include driver: ");
-        boolean includeDriver = Boolean.parseBoolean(scanner.nextLine());
+            System.out.print("Include driver: ");
+            boolean includeDriver = Boolean.parseBoolean(scanner.nextLine());
 
-        String line = rentCar(carType, days, insurance, includeDriver);
-        System.out.println(line);
+            String line = rentCar(type, days, insurance, includeDriver);
+            System.out.println("===== TRANSACTION =====");
+            System.out.println(line);
 
-        scanner.close();
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            scanner.close();
+        }
     }
 
-    public static String rentCar(CarType type, int days, double insurance, boolean includeDriver) {
+    public static String rentCar(String type, int days, double insurance, boolean includeDriver) {
         double price = carPrice(type);
         double rentalFee = price*days;
         double insuranceFee = rentalFee - insurance;
@@ -44,8 +49,10 @@ public class CarRentalCalculator {
         "\nGrand total: " + GrandTotal;
     }
 
-    private static double carPrice(CarType type) {
-        switch(type) {
+    private static double carPrice(String type) {
+        CarType types = CarType.valueOf(type.toUpperCase().trim());
+
+        switch(types) {
             case CarType.SEDAN -> {
                 return 5000;
             }

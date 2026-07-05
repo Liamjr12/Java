@@ -40,9 +40,11 @@ public class BMICalculator {
     public static void main(String[] args) {
         
         try {
+
             Scanner scanner = new Scanner(System.in);
             BMICalculator bmi = BMICalculator.Calculator(scanner);
             System.out.println("BMI: " + bmi.getBMI());
+            
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage() + "\n");
         }
