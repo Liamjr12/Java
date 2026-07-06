@@ -3,35 +3,36 @@ package Fundamentals;
 import java.util.Scanner;
 
 public class CarRentalCalculator {
-    
     enum CarType {
         SEDAN, SUV, HATCHBACK, COUPE, CONVERTIBLE, STATION_WAGON, MINIVAN, CROSSOVER, SPORTS_CAR;
     }
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
 
-        try {
-            System.out.print("Car type: ");
-            String type = scanner.nextLine();
+        while (true) {
+            try {
+                System.out.print("Car type: ");
+                String type = scanner.nextLine();
 
-            System.out.print("Days: ");
-            int days = Integer.parseInt(scanner.nextLine());
+                System.out.print("Days: ");
+                int days = Integer.parseInt(scanner.nextLine());
 
-            System.out.print("Insurance: ");
-            double insurance = Double.parseDouble(scanner.nextLine());
+                System.out.print("Insurance: ");
+                double insurance = Double.parseDouble(scanner.nextLine());
 
-            System.out.print("Include driver: ");
-            boolean includeDriver = Boolean.parseBoolean(scanner.nextLine());
+                System.out.print("Include driver: ");
+                boolean includeDriver = Boolean.parseBoolean(scanner.nextLine());
 
-            String line = rentCar(type, days, insurance, includeDriver);
-            System.out.println("===== TRANSACTION =====");
-            System.out.println(line);
-
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input");
-            scanner.close();
+                String line = rentCar(type, days, insurance, includeDriver);
+                System.out.println("===== TRANSACTION =====");
+                System.out.println(line);
+                
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input");
+                scanner.close();
+            }
         }
     }
 

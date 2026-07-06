@@ -5,28 +5,29 @@ import java.util.Scanner;
 public class LoanCalculator {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
 
-        try {
+        while (true) {
+            try {
 
-            System.out.print("Loan amount: ");
-            double loanAmount = Double.parseDouble(scanner.nextLine());
+                System.out.print("Loan amount: ");
+                double loanAmount = Double.parseDouble(scanner.nextLine());
 
-            System.out.print("Interest rate: ");
-            double interestRate = Double.parseDouble(scanner.nextLine());
+                System.out.print("Interest rate: ");
+                double interestRate = Double.parseDouble(scanner.nextLine());
 
-            System.out.print("Year: ");
-            double year = Double.parseDouble(scanner.nextLine());
+                System.out.print("Year: ");
+                double year = Double.parseDouble(scanner.nextLine());
 
-            System.out.println("\n===== TRANSACTION =====");
-            getMonthlyPayment(loanAmount, interestRate, year);
-            scanner.close();
+                System.out.println("\n===== TRANSACTION =====");
+                getMonthlyPayment(loanAmount, interestRate, year);
+                scanner.close();
 
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input");
-            scanner.close();
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input");
+                scanner.close();
+            }
         }
-
     }
 
     public static void getMonthlyPayment(double loanAmount, double interestRate, double year) {

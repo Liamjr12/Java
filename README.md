@@ -1,26 +1,94 @@
-# Java
+# **Java**
 
-## Java Fundamentals
+## **Java Fundamentals**
 Java is a high-level programming language for coding created by Sun Microsystems in 1995 as a `multi-platform`, `object-oriented`, and `network centric` language.
 
-### Java Core Requirements
-### **1. Java Runtime Environment** 
-* A software package that provides libraries and other resources that Java program requires to run correctly
+### **<ins>Java Core Requirements</ins>**
+#### **1. Java Runtime Environment** 
+A software package that provides libraries and other resources that Java program requires to run correctly
 
-### **2. Java Virtual Machine**
-* <ins>Machine that runs Java application as a run-time engine</ins>:
-    * `compliers` - convers your writen instruction [code] into binary program before execution. Then, the CPU executes directly later
-    * `interpreter` - takes the source code [instructions], then translates into machine instruction (in binary) and execute the code to the CPU line-by-line in `real-time`
+#### **2. Java Virtual Machine**
+Machine that runs Java application as a run-time engine:
+* `compliers` - convers your writen instruction into binary program before execution. Then, the CPU executes directly later
+* `interpreter` - takes the source code, then translates into machine instruction (<i><span style="color: red;">in binary</span></i>) and execute the code to the CPU line-by-line in `real-time`
 
-### **3. Java Application Programming Interface**
-* Built-in Java functions that can be used by the users
+#### **3. Java Application Programming Interface**
+Built-in Java functions that can be used by the users
 
-<hr>
 
-# Data Types
+# **Data Types**
 Used for possible storage and operation on the data.
 
 ## **1. Primitive Data Types**
+These are data that are not object and have no methods
+<table>
+    <tr>
+        <th>Data types</th>
+        <th>Description</th>
+        <th>Size</th>
+        <th>Default value</th>
+        <th>Range</th>
+    </tr>
+    <tr>
+        <th>byte</th>
+        <th>Byte length integer</th>
+        <th>8-bit</th>
+        <th>0</th>
+        <th>-128 to +127</th>
+    </tr>
+    <tr>
+        <th>short</th>
+        <th>Short integer</th>
+        <th>16-bit</th>
+        <th>0</th>
+        <th>-32,768 to +32,767</th>
+    </tr>
+    <tr>
+        <th>int</th>
+        <th>Integer number</th>
+        <th>32-bit</th>
+        <th>0</th>
+        <th>-2.15x10<sup>9</sup> to +2.15x10<sup>6</sup></th>
+    </tr>
+    <tr>
+        <th>long</th>
+        <th>Long integer</th>
+        <th>64-bit</th>
+        <th>0L</th>
+        <th>-2<sup>63</sup> to +2<sup>63</sup>-1</th>
+    </tr>
+    <tr>
+        <th>float</th>
+        <th>Single precision floating point</th>
+        <th>32-bit</th>
+        <th>0.0f</th>
+        <th>-1.4x10<sup>-45</sup> to +3.4x10<sup>38</sup></th>
+    </tr>
+    <tr>
+        <th>double</th>
+        <th>Double precision floating point</th>
+        <th>64-bit</th>
+        <th>0.0d</th>
+        <th>-4.9x10<sup>-324</sup> to +1.8x10<sup>308</sup></th>
+    </tr>
+    <tr>
+        <th>char</th>
+        <th>Simple character</th>
+        <th>8-bit</th>
+        <th>\u0000</th>
+        <th>0 to 65,535</th>
+    </tr>
+    <tr>
+        <th>boolean</th>
+        <th>A boolean with true or false value</th>
+        <th>1-bit</th>
+        <th>false</th>
+        <th>-</th>
+    </tr>
+</table>
+
+## **Example**
+
 ```java
     //Primitive Data Types
     byte byteExample = 127;
@@ -49,13 +117,13 @@ Used for possible storage and operation on the data.
 ```
 
 ## **2. Abstract Data Type**
-* A package that is based on the primitive data type that have more functionalities (e.g. `String` class)
-* Performing mathematical calculation is not allowed even if the data is stored in has digits
+A package that is based on the primitive data type that have more functionalities (e.g. `String` class). <br>
+ Performing mathematical calculation is not allowed even if the data is stored in has digits
 
-<hr>
 
-# Variables and Constants
-A variable is a combinations of a `type`, `identifier`, and `value` that can be change in the program. On the other hand, a constant is also the same combination as variable, but the value cannot be change in program.
+# **Variables and Constants**
+A variable is a combinations of a `type`, `identifier`, and `value` that can be change in the program. <br>
+On the other hand, a constant is also the same combination as variable, but the value cannot be change in program.
 
 ```java
 //Variable
@@ -69,218 +137,297 @@ name = "NewLiamJr";
 System.out.println(name);   //This will result an error
 
 ```
-<hr>
 
-# Operators
-* Symbols used to compute and compare values and test to test multiple conditons
+# **Operators**
+Symbols used to compute and compare values and test to test multiple conditons
 
-## **1. Arithmetic Operators** 
-1. `Add`
-```java
-//Example 1
-int var1 = 5;
-int var2 = 7;
-System.out.println(var1 + var2);
+## **Arithmetic Operator**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>Addition<th>
+        <th>+</th>
+        <th>adds an operand</th>
+        <th>int x = y + z</th>
+    </tr>
+    <tr>
+        <th>Subtraction<th>
+        <th>-</th>
+        <th>subtracts the right operand from the left operand</th>
+        <th>int x = y - z</th>
+    </tr>
+    <tr>
+        <th>Multiplication<th>
+        <th>*</th>
+        <th>Multiplies the operands</th>
+        <th>int x = y * z</th>
+    </tr>
+    <tr>
+        <th>Division<th>
+        <th>/</th>
+        <th>Divides the left operand by the right operance</th>
+        <th>int x = y / z</th>
+    </tr>
+    <tr>
+        <th>Modulus<th>
+        <th>%</th>
+        <th>calculates the remainder of an integer division</th>
+        <th>int x = y % z</th>
+    </tr>
+</table>
 
-//Example 2
-float var1 = 6.7f;
-float var2 = 12.9;
-System.out.println(var1 + var2);
-```
-2. `Subtract`
-```java
-//Example 1
-int var1 = 9;
-int var2 = 12;
-System.out.println(var2 - var1);
+## **Assignment Operator**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>Assignment<th>
+        <th>=</th>
+        <th>assigns the value of the right operand to the left operand</th>
+        <th>int x = y</th>
+    </tr>
+    <tr>
+        <th>Add and assignment<th>
+        <th>+=</th>
+        <th>adds the operands and assigns the result to the left operand</th>
+        <th>int x += y</th>
+    </tr>
+    <tr>
+        <th>Subtract and assignment<th>
+        <th>-=</th>
+        <th>subtracts the right operand from the left operand and store the value the result in the left operand</th>
+        <th>int x -= y</th>
+    </tr>
+    <tr>
+        <th>Multiple and assignment<th>
+        <th>*=</th>
+        <th>multiplies the right operand from the left operand and store the value the result in the left operand</th>
+        <th>int x *= yz</th>
+    </tr>
+    <tr>
+        <th>Divide and assignment<th>
+        <th>/=</th>
+        <th>divides the right operand from the left operand and store the value the result in the left operand</th>
+        <th>int x /= y</th>
+    </tr>
+    <tr>
+        <th>Modulus and assignment<th>
+        <th>%=</th>
+        <th>get the remainder of the right operand from the left operand and store the value the result in the left operand</th>
+        <th>int x %= y</th>
+    </tr>
+</table>
 
-//Example 2
-float var1 = 6.7f;
-float var2 = 12.9;
-System.out.println(var2 - var1);
-```
-3. `Multiply`
-```java
-//Example 1
-int var1 = 3;
-int var2 = 2;
-System.out.println(var1 * var2);
+## **Unary Operator**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>Unary plus<th>
+        <th>+</th>
+        <th>represents the positive value</th>
+        <th>+a</th>
+    </tr>
+    <tr>
+        <th>Unary minus<th>
+        <th>-</th>
+        <th>represents the negative value</th>
+        <th>-a</th>
+    </tr>
+    <tr>
+        <th>Increament<th>
+        <th>++</th>
+        <th>increases the value of the operand by 1</th>
+        <th>a++</th>
+    </tr>
+    <tr>
+        <th>Decreament<th>
+        <th>--</th>
+        <th>increases the value of the operand by 1</th>
+        <th>a--</th>
+    </tr>
+    <tr>
+        <th>Logical complement<th>
+        <th>!</th>
+        <th>inverts the value of a boolean variable</th>
+        <th>!true</th>
+    </tr>
+</table>
 
-//Example 2
-float var1 = 5.5f;
-float var2 = 10.1;
-System.out.println(var1 * var2);
-```
-4. `Divide`
-```java
-//Example 1
-int var1 = 5;
-int var2 = 30;
-System.out.println(var2 / var1);
+## **Comparison Operator**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>Equal to<th>
+        <th>==</th>
+        <th>evaluates whether the operands are equals</th>
+        <th>x == y</th>
+    </tr>
+    <tr>
+        <th>Not equal to<th>
+        <th>!=</th>
+        <th>evaluates whether the operands are not equals</th>
+        <th>x != y</th>
+    </tr>
+    <tr>
+        <th>Greater than<th>
+        <th>></th>
+        <th>evaluates whether the left operands is greater than the right operand</th>
+        <th>x > y</th>
+    </tr>
+    <tr>
+        <th>Less than<th>
+        <th><</th>
+        <th>evaluates whether the left operands is greater than the less operand</th>
+        <th>x < y</th>
+    </tr>
+    <tr>
+        <th>Greater than or equal<th>
+        <th>>=</th>
+        <th>evaluates whether the left operands is greater than or equal to the right operand</th>
+        <th>x >= y</th>
+    </tr>
+    <tr>
+        <th>Less than or equal<th>
+        <th>>=</th>
+        <th>evaluates whether the left operands is less than or equal to the right operand</th>
+        <th>x <= y</th>
+    </tr>
+</table>
 
-//Example 2
-float var1 = 3.5f;
-float var2 = 7.0;
-System.out.println(var2 / var1);
-```
-5. `Modulus`
-```java
-//Example 1
-int var1 = 5;
-int var2 = 30;
-System.out.println(var2 % var1);
+## **Shift Operator**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>Signed left shift<th>
+        <th><<</th>
+        <th>shifts all the bits to the right by specified number. For example, num<<2, will shift the bits of num to left by two position</th>
+        <th>x << 2</th>
+    </tr>
+    <tr>
+        <th>Signed right shift<th>
+        <th>>></th>
+        <th>shifts all the bits to the left by specified number. For example, num>>2, will shift the bits of num to left by two position</th>
+        <th>x >> 2</th>
+    </tr>
+    <tr>
+        <th>Unsigned right shift<th>
+        <th> >>> </th>
+        <th>same as signed right shift except that it fills the vacent leftmost position with I's instead of sign bit</th>
+        <th>x >>> 2</th>
+    </tr>
+</table>
 
-//Example 2
-float var1 = 3.5f;
-float var2 = 7.0;
-System.out.println(var2 % var1);
-```
+## **Bitwise Operator**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>AND<th>
+        <th>&</th>
+        <th>AND results in a 1 if both the bits are 1. Any other combination results in 0</th>
+        <th>x & y</th>
+    </tr>
+    <tr>
+        <th>OR<th>
+        <th>|</th>
+        <th>OR result in a 0 when both the bits are 0. Any other combination results 1</th>
+        <th>x | y</th>
+    </tr>
+    <tr>
+        <th>XOR<th>
+        <th>^</th>
+        <th>XOR results in a 0, if both the bits are of the same value and 1 if the bits have different values</th>
+        <th>x ^ y</th>
+    </tr>
+    <tr>
+        <th>Inversion<th>
+        <th>~</th>
+        <th>convers all 1 bits to 0's and all 0 bits to 1's</th>
+        <th>~x</th>
+    </tr>
+</table>
 
-## **2. Assignment Operator**
-1. `Assignment`
-```java
-```java
-//Example 1
-int var1 = 50;
-int var2 = 300;
-System.out.println(var1 = var1);
+# **Logical Operators**
+<table>
+    <tr>
+        <th>Name<th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <th>Logical AND<th>
+        <th>&&</th>
+        <th>if both the operands are non-zero,  the expression returns true; otherwise, it returns false</th>
+        <th>x > 4 && y < 8</th>
+    </tr>
+    <tr>
+        <th>Logical OR<th>
+        <th>||</th>
+        <th>If one or both the operand are non-zero, the expression returns true; otherwise, it returns false</th>
+        <th>x > 4 || y < 8</th>
+    </tr>
+</table>
 
-//Example 2
-float var1 = 2.25f;
-float var2 = 14.9;
-System.out.println(var1 = var2);
-```
-2. `Add and assign`
-```java
-//Example 1
-int var1 = 5;
-int var2 = 7;
-System.out.println(var1 += var2);
+# **Input**
+It is the process of entering a data in the software running on computer through typed text, various types of files, or mouse commands. <br>
+It come on different sources such as mouse, keyboard, a disk, or even sensor on a robots.
 
-//Example 2
-float var1 = 6.7f;
-float var2 = 12.9;
-System.out.println(var1 += var2);
-```
-3. `Subtract and assign`
-```java
-//Example 1
-int var1 = 9;
-int var2 = 12;
-System.out.println(var2 -= var1);
+# **Output**
+The data processed by the computer software that can be directed at printers, screen monitor, and other devices that displays output. <br>
+Can be any form such as output on screen, a disk, a printer, or even in a form of movement found in a robots.
 
-//Example 2
-float var1 = 6.7f;
-float var2 = 12.9;
-System.out.println(var2 -= var1);
-```
-4. `Multiply and assign`
-```java
-//Example 1
-int var1 = 3;
-int var2 = 2;
-System.out.println(var1 *= var2);
+# **Scanner package**
+An import statement `import java.util.Scanner;` is added to use predefined method for inputs. <br> On the other hand, `System.out` is the console output, the output sent to the console. <br> While the `println` is the statement (<i><span style="color: red;">function</span></i>) that display the value to be shown on the screen or monitor.
 
-//Example 2
-float var1 = 5.5f;
-float var2 = 10.1;
-System.out.println(var1 *= var2);
-```
-5. `Divide and assign`
-```java
-//Example 1
-int var1 = 5;
-int var2 = 30;
-System.out.println(var2 /= var1);
+# **Java.lang**
+It includes the system and math classes. <br> This package is automatically imported into all java programs so `import` statement is not needed to use the functions of the lang package.
 
-//Example 2
-float var1 = 3.5f;
-float var2 = 7.0;
-System.out.println(var2 /= var1);
-```
-6. `Remainder and assign`
-```java
-//Example 1
-int var1 = 5;
-int var2 = 30;
-System.out.println(var2 %= var1);
+# **Control-Flow Structure**
+A program that performs decision making to determine the sequence in which it will execute the instructions. <br> It is also used to control the execution flow of the program.
 
-//Example 2
-float var1 = 3.5f;
-float var2 = 7.0;
-System.out.println(var2 %= var1);
-```
+## **1. Selection Statement**
+A control flow construct that directs the program to execute specific blocks of code based on whether a runtime condition evaluates to true or false.
+* `if-statement` - data is compared, and decision is made depending on the comparison result
+* `if-else statement` - extention of if-statement where the else-block is executed whenever the if-block is false
+* `switch statement` - it is used whenever there are multiple values possible for variable
 
-## **3. Unary Operators**
-1. `Unary plus/minus`
-```java
-int a = 10;
-System.out.println(+a); // 10
-System.out.println(-a); // -10
-```
-2. `Increment`
-```java
-int a = 5;
-a++; // a is 6
-```
-3. `Decrement`
-```java
-int a = 5;
-a--; // a is 4
-```
-4. `Logical Complement`
-``` java
-boolean isCorrect = true;
-System.out.println(!isCorrect); // false
-```
+## **2. Repetition Statement**
+A looping statement that causes a section of a program to be repeated based on a specific number of times. The loop continues until the condition becomes false.
+* `while-statement` - loop that continues until the evaluating condition becomes false
+* `do-while statement` - loop that list the contion after the statement to be executed
+* `for-statement` - used when the iteration are known in advance (<i><span style="color: red;">iteration refers to the number of times the loop body is executed</span></i>)
 
-## **4. Comparison Operators**
-1. `Equal to`
-```java
-int a = 5; int b = 5;
-System.out.println(a == b); // true
-```
-2. `Not equal to`
-```java
-int a = 5; int b = 3;
-System.out.println(a != b); // true
-```
-3. `Greater then`
-```java
-int a = 10; int b = 5;
-System.out.println(a > b); // true
-```
-4. `Less than`
-```java
-int a = 2; int b = 5;
-System.out.println(a < b); // true
-```
-5. `Greater than equal to`
-```java
-int a = 5; int b = 5;
-System.out.println(a >= b); // true
-```
-6. `Less than equal to`
-```java
-int a = 4; int b = 5;
-System.out.println(a <= b); // true
-```
-
-## **5. Shift Operators**
-1. `Left shift`
-```java
-int a = 5; // 0101
-System.out.println(a << 1); // 10
-```
-2. `Right shift`
-```java
-int a = 10;
-System.out.println(a >> 1); // 5
-```
-3. `Unsigned right shift`
-```java
-int a = 15;
-System.out.println(a >>> 1); // 0
-```
-
-<hr>
+## **3. Branching Statement**
+These statements transfer control to another part of the program.
+* `break-statement` - used to break out of loop and can be labeled or unlabeled (<i><span style="color: red;">also breaks switch statement</span><i>)
+* `continue-statement` - used in looping statement to skip current iteration of the loop and resume to the next iteration
+* `return-statement` - transfers the control to the caller of the method

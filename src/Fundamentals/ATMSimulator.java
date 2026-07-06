@@ -5,8 +5,9 @@ import java.util.Scanner;
 public class ATMSimulator {
     public static void main(String[] args) throws Exception {
 
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
         double balance = 5000;
+
         while (true) {
             try {
                 System.out.println("""
