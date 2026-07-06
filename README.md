@@ -144,37 +144,37 @@ Symbols used to compute and compare values and test to test multiple conditons
 ## **Arithmetic Operator**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>Addition<th>
+        <th>Addition</th>
         <th>+</th>
         <th>adds an operand</th>
         <th>int x = y + z</th>
     </tr>
     <tr>
-        <th>Subtraction<th>
+        <th>Subtraction</th>
         <th>-</th>
         <th>subtracts the right operand from the left operand</th>
         <th>int x = y - z</th>
     </tr>
     <tr>
-        <th>Multiplication<th>
+        <th>Multiplication</th>
         <th>*</th>
         <th>Multiplies the operands</th>
         <th>int x = y * z</th>
     </tr>
     <tr>
-        <th>Division<th>
+        <th>Division</th>
         <th>/</th>
         <th>Divides the left operand by the right operance</th>
         <th>int x = y / z</th>
     </tr>
     <tr>
-        <th>Modulus<th>
+        <th>Modulus</th>
         <th>%</th>
         <th>calculates the remainder of an integer division</th>
         <th>int x = y % z</th>
@@ -184,43 +184,43 @@ Symbols used to compute and compare values and test to test multiple conditons
 ## **Assignment Operator**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>Assignment<th>
+        <th>Assignment</th>
         <th>=</th>
         <th>assigns the value of the right operand to the left operand</th>
         <th>int x = y</th>
     </tr>
     <tr>
-        <th>Add and assignment<th>
+        <th>Add and assignment</th>
         <th>+=</th>
         <th>adds the operands and assigns the result to the left operand</th>
         <th>int x += y</th>
     </tr>
     <tr>
-        <th>Subtract and assignment<th>
+        <th>Subtract and assignment</th>
         <th>-=</th>
         <th>subtracts the right operand from the left operand and store the value the result in the left operand</th>
         <th>int x -= y</th>
     </tr>
     <tr>
-        <th>Multiple and assignment<th>
+        <th>Multiple and assignment</th>
         <th>*=</th>
         <th>multiplies the right operand from the left operand and store the value the result in the left operand</th>
         <th>int x *= yz</th>
     </tr>
     <tr>
-        <th>Divide and assignment<th>
+        <th>Divide and assignment</th>
         <th>/=</th>
         <th>divides the right operand from the left operand and store the value the result in the left operand</th>
         <th>int x /= y</th>
     </tr>
     <tr>
-        <th>Modulus and assignment<th>
+        <th>Modulus and assignment</th>
         <th>%=</th>
         <th>get the remainder of the right operand from the left operand and store the value the result in the left operand</th>
         <th>int x %= y</th>
@@ -230,37 +230,37 @@ Symbols used to compute and compare values and test to test multiple conditons
 ## **Unary Operator**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>Unary plus<th>
+        <th>Unary plus</th>
         <th>+</th>
         <th>represents the positive value</th>
         <th>+a</th>
     </tr>
     <tr>
-        <th>Unary minus<th>
+        <th>Unary minus</th>
         <th>-</th>
         <th>represents the negative value</th>
         <th>-a</th>
     </tr>
     <tr>
-        <th>Increament<th>
+        <th>Increament</th>
         <th>++</th>
         <th>increases the value of the operand by 1</th>
         <th>a++</th>
     </tr>
     <tr>
-        <th>Decreament<th>
+        <th>Decreament</th>
         <th>--</th>
         <th>increases the value of the operand by 1</th>
         <th>a--</th>
     </tr>
     <tr>
-        <th>Logical complement<th>
+        <th>Logical complement</th>
         <th>!</th>
         <th>inverts the value of a boolean variable</th>
         <th>!true</th>
@@ -270,43 +270,43 @@ Symbols used to compute and compare values and test to test multiple conditons
 ## **Comparison Operator**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>Equal to<th>
+        <th>Equal to</th>
         <th>==</th>
         <th>evaluates whether the operands are equals</th>
         <th>x == y</th>
     </tr>
     <tr>
-        <th>Not equal to<th>
+        <th>Not equal to</th>
         <th>!=</th>
         <th>evaluates whether the operands are not equals</th>
         <th>x != y</th>
     </tr>
     <tr>
-        <th>Greater than<th>
+        <th>Greater than</th>
         <th>></th>
         <th>evaluates whether the left operands is greater than the right operand</th>
         <th>x > y</th>
     </tr>
     <tr>
-        <th>Less than<th>
+        <th>Less than</th>
         <th><</th>
         <th>evaluates whether the left operands is greater than the less operand</th>
         <th>x < y</th>
     </tr>
     <tr>
-        <th>Greater than or equal<th>
+        <th>Greater than or equal</th>
         <th>>=</th>
         <th>evaluates whether the left operands is greater than or equal to the right operand</th>
         <th>x >= y</th>
     </tr>
     <tr>
-        <th>Less than or equal<th>
+        <th>Less than or equal</th>
         <th>>=</th>
         <th>evaluates whether the left operands is less than or equal to the right operand</th>
         <th>x <= y</th>
@@ -316,25 +316,25 @@ Symbols used to compute and compare values and test to test multiple conditons
 ## **Shift Operator**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>Signed left shift<th>
+        <th>Signed left shift</th>
         <th><<</th>
         <th>shifts all the bits to the right by specified number. For example, num<<2, will shift the bits of num to left by two position</th>
         <th>x << 2</th>
     </tr>
     <tr>
-        <th>Signed right shift<th>
+        <th>Signed right shift</th>
         <th>>></th>
         <th>shifts all the bits to the left by specified number. For example, num>>2, will shift the bits of num to left by two position</th>
         <th>x >> 2</th>
     </tr>
     <tr>
-        <th>Unsigned right shift<th>
+        <th>Unsigned right shift</th>
         <th> >>> </th>
         <th>same as signed right shift except that it fills the vacent leftmost position with I's instead of sign bit</th>
         <th>x >>> 2</th>
@@ -344,31 +344,31 @@ Symbols used to compute and compare values and test to test multiple conditons
 ## **Bitwise Operator**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>AND<th>
+        <th>AND</th>
         <th>&</th>
         <th>AND results in a 1 if both the bits are 1. Any other combination results in 0</th>
         <th>x & y</th>
     </tr>
     <tr>
-        <th>OR<th>
+        <th>OR</th>
         <th>|</th>
         <th>OR result in a 0 when both the bits are 0. Any other combination results 1</th>
         <th>x | y</th>
     </tr>
     <tr>
-        <th>XOR<th>
+        <th>XOR</th>
         <th>^</th>
         <th>XOR results in a 0, if both the bits are of the same value and 1 if the bits have different values</th>
         <th>x ^ y</th>
     </tr>
     <tr>
-        <th>Inversion<th>
+        <th>Inversion</th>
         <th>~</th>
         <th>convers all 1 bits to 0's and all 0 bits to 1's</th>
         <th>~x</th>
@@ -378,19 +378,19 @@ Symbols used to compute and compare values and test to test multiple conditons
 # **Logical Operators**
 <table>
     <tr>
-        <th>Name<th>
+        <th>Name</th>
         <th>Operator</th>
         <th>Description</th>
         <th>Example</th>
     </tr>
     <tr>
-        <th>Logical AND<th>
+        <th>Logical AND</th>
         <th>&&</th>
         <th>if both the operands are non-zero,  the expression returns true; otherwise, it returns false</th>
         <th>x > 4 && y < 8</th>
     </tr>
     <tr>
-        <th>Logical OR<th>
+        <th>Logical OR</th>
         <th>||</th>
         <th>If one or both the operand are non-zero, the expression returns true; otherwise, it returns false</th>
         <th>x > 4 || y < 8</th>
