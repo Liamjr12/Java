@@ -3,7 +3,7 @@ package Fundamentals;
 import java.util.Scanner;
 
 public class LoanCalculator {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         final Scanner scanner = new Scanner(System.in);
 
@@ -34,7 +34,7 @@ public class LoanCalculator {
     private static double readDouble(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase("Exit")) {
                 System.out.println("Exiting...");
@@ -49,5 +49,4 @@ public class LoanCalculator {
             }
         }
     }
-
 }

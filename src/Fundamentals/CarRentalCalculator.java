@@ -7,7 +7,7 @@ public class CarRentalCalculator {
         SEDAN, SUV, HATCHBACK, COUPE, CONVERTIBLE, STATION_WAGON, MINIVAN, CROSSOVER, SPORTS_CAR;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         final Scanner scanner = new Scanner(System.in);
 
@@ -23,14 +23,14 @@ public class CarRentalCalculator {
                 double insurance = Double.parseDouble(scanner.nextLine());
 
                 System.out.print("Include driver: ");
-                boolean includeDriver = Boolean.parseBoolean(scanner.nextLine());
+                boolean includeDriver = readBoolean(scanner);
 
                 String line = rentCar(type, days, insurance, includeDriver);
                 System.out.println("===== TRANSACTION =====");
-                System.out.println(line + "\n");
+                System.out.println(line.concat("\n"));
 
                 System.out.print("Continue(Yes/No)? ");
-                String continueProcess = scanner.nextLine();
+                String continueProcess = scanner.nextLine().trim();
 
                 if (continueProcess.equalsIgnoreCase("No")) {
                     System.out.println("Exiting...");
@@ -44,7 +44,7 @@ public class CarRentalCalculator {
         }
     }
 
-    public static String rentCar(String type, int days, double insurance, boolean includeDriver) {
+    private static String rentCar(String type, int days, double insurance, boolean includeDriver) {
         double price = carPrice(type);
         double rentalFee = price*days;
         double insuranceFee = rentalFee - insurance;
@@ -95,4 +95,13 @@ public class CarRentalCalculator {
         return 0;
     }
 
+    private static boolean readBoolean(Scanner scanner) {
+        String input = scanner.nextLine().trim();
+
+        if(input.equalsIgnoreCase("Yes")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

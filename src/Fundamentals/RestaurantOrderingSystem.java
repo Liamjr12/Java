@@ -3,12 +3,11 @@ package Fundamentals;
 import java.util.Scanner;
 
 public class RestaurantOrderingSystem {
-
     enum Selection {
         BURGER, FRIES, SODA, JUICE, WATER;
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
         final Scanner scanner = new Scanner(System.in);
 
@@ -30,14 +29,23 @@ public class RestaurantOrderingSystem {
                 boolean isDefect = Boolean.parseBoolean(scanner.nextLine());
                 getOrdersPrice(orders, quantity, discount, isMinor, isDefect);
 
-            } catch(NumberFormatException e) {
+                System.out.print("Continue (Yes/No)? ");
+                String continueProcess = scanner.nextLine().trim();
+
+                if (continueProcess.equalsIgnoreCase("No")) {
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    System.exit(0);
+                }
+
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
                 scanner.close();
             } 
         }
     }
 
-    public static void getOrdersPrice(String order, int quantity, double discount, boolean isMinor, boolean isDefect) {
+    private static void getOrdersPrice(String order, int quantity, double discount, boolean isMinor, boolean isDefect) {
         double price = getOrders(order);
 
         double subtotal = price*quantity;

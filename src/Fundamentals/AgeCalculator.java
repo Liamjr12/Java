@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class AgeCalculator {
     enum ageDescription {Minor, Adult;}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         final Scanner scanner = new Scanner(System.in);
 
@@ -17,10 +17,10 @@ public class AgeCalculator {
         int age = calculateAge(birthYear, birthMonth, birthDay);
         ageDescription isMinor = (age < 18) ? ageDescription.Minor : ageDescription.Adult;
         System.out.println("===== AGE DESCRIPTION =====");
-        System.out.println("Age: " + age + "; " + isMinor);
+        System.out.println("Age: " + age + "| " + isMinor);
     }
 
-    public static int calculateAge(int birthYear, int birthMonth, int birthDay) {
+    private static int calculateAge(int birthYear, int birthMonth, int birthDay) {
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
         LocalDate dayToday = LocalDate.now(); 
 
@@ -32,7 +32,7 @@ public class AgeCalculator {
         while (true) {
             System.out.print(prompt);
 
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().trim();
 
             if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Program terminated.");
