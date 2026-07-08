@@ -4,34 +4,20 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class AgeCalculator {
-    enum ageDescription {Minor, Senior;}
+    enum ageDescription {Minor, Adult;}
 
     public static void main(String[] args) {
 
         final Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            try {
-                System.out.print("Enter birthyear: ");
-                int birthYear = Integer.parseInt(scanner.nextLine());
+        int birthYear = readInt(scanner, "Enter birthyear: ");
+        int birthMonth = readInt(scanner, "Enter birthmonth: ");
+        int birthDay = readInt(scanner, "Enter birthday: ");
 
-                System.out.print("Enter birthmonth: ");
-                int birthMonth = Integer.parseInt(scanner.nextLine());
-
-                System.out.print("Enter birthday: ");
-                int birthDay = Integer.parseInt(scanner.nextLine()); 
-                
-                int age = calculateAge(birthYear, birthMonth, birthDay);
-                String isValid = (age > 18) ? "Age: " + age + "; " + ageDescription.Senior : "Age: " + age + "; " + ageDescription.Minor;
-
-                System.out.println("\n===== AGE DESCRIPTION =====");
-                System.out.println(isValid);
-
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input");
-                scanner.close();
-            }
-        }
+        int age = calculateAge(birthYear, birthMonth, birthDay);
+        ageDescription isMinor = (age < 18) ? ageDescription.Minor : ageDescription.Adult;
+        System.out.println("===== AGE DESCRIPTION =====");
+        System.out.println("Age: " + age + "; " + isMinor);
     }
 
     public static int calculateAge(int birthYear, int birthMonth, int birthDay) {
@@ -40,5 +26,25 @@ public class AgeCalculator {
 
         int age = dayToday.getYear() - birthDate.getYear();
         return age; 
+    }
+
+    private static int readInt(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Program terminated.");
+                scanner.close();
+                System.exit(0);
+            }
+
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number. Try again.");
+            }
+        }
     }
 }

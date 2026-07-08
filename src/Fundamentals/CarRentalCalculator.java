@@ -13,7 +13,7 @@ public class CarRentalCalculator {
 
         while (true) {
             try {
-                System.out.print("Car type: ");
+                System.out.print("\nCar type: ");
                 String type = scanner.nextLine();
 
                 System.out.print("Days: ");
@@ -27,11 +27,19 @@ public class CarRentalCalculator {
 
                 String line = rentCar(type, days, insurance, includeDriver);
                 System.out.println("===== TRANSACTION =====");
-                System.out.println(line);
-                
+                System.out.println(line + "\n");
+
+                System.out.print("Continue(Yes/No)? ");
+                String continueProcess = scanner.nextLine();
+
+                if (continueProcess.equalsIgnoreCase("No")) {
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    System.exit(0);
+                } 
+
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input");
-                scanner.close();
             }
         }
     }
