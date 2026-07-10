@@ -8,21 +8,15 @@ public class LoanCalculator {
         final Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            double loanAmount = readDouble(scanner, "Loan amount: ");
-            double interestRate = readDouble(scanner, "Interest rate: ");
-            double year = readDouble(scanner, "Year: ");
+            try {
+                double loanAmount = readDouble(scanner, "Loan amount: ");
+                double interestRate = readDouble(scanner, "Interest rate: ");
+                double year = readDouble(scanner, "Year: ");
 
-            System.out.println("\n===== TRANSACTION =====");
-            getMonthlyPayment(loanAmount, interestRate, year);
-
-            System.out.print("\nContinue(Yes/No)? ");
-            String line = scanner.nextLine().trim();
-
-
-            if (line.equalsIgnoreCase("No")) {
-                System.out.println("Exiting...");
-                scanner.close();
-                System.exit(0);
+                System.out.println("\n===== TRANSACTION =====");
+                getMonthlyPayment(loanAmount, interestRate, year);
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -44,21 +38,19 @@ public class LoanCalculator {
     }
 
     private static double readDouble(Scanner scanner, String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine().trim();
+        System.out.print(prompt);
+        String input = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase("Exit")) {
-                System.out.println("Exiting...");
-                scanner.close();
-                System.exit(0);
-            }
-
-            try {
-                return Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input");
-            }
+        if (input.equalsIgnoreCase("Exit")) {
+            System.out.println("Exiting...");
+            scanner.close();
+            System.exit(0);
         }
+
+        if (input.matches("\\d{1,4}")) {
+            throw new IllegalArgumentException("An input must only contain a numbers");
+        }
+
+        return Double.parseDouble(input);
     }
 }

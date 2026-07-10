@@ -8,20 +8,15 @@ public class ElectricityBillCalculator {
         final Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            double previousReading = readDouble(scanner, "\nPrevious reading: ");
-            double currentReading = readDouble(scanner, "Current reading: ");
-            double ratePerKwh = readDouble(scanner, "Rate per kWh: ");
+            try {
+                double previousReading = readDouble(scanner, "\nPrevious reading: ");
+                double currentReading = readDouble(scanner, "Current reading: ");
+                double ratePerKwh = readDouble(scanner, "Rate per kWh: ");
 
-            System.out.println("\n===== ELECTRICITY BILL DETAILS =====");
-            getElectricityBill(previousReading, currentReading, ratePerKwh);
-
-            System.out.print("\nContinue(Yes/No)? ");
-            String line = scanner.nextLine().trim();
-
-            if (line.equalsIgnoreCase("No")) {
-                System.out.println("Exiting...");
-                scanner.close();
-                System.exit(0);
+                System.out.println("\n===== ELECTRICITY BILL DETAILS =====");
+                getElectricityBill(previousReading, currentReading, ratePerKwh);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -39,22 +34,20 @@ public class ElectricityBillCalculator {
     }
 
     private static double readDouble(Scanner scanner, String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            String input = scanner.nextLine().trim();
+        System.out.print(prompt);
+        String input = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase("Exit")) {
-                System.out.println("Exiting...");
-                scanner.close();
-                System.exit(0);
-            }
-
-            try {
-                return Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input");
-            }
+        if (input.equalsIgnoreCase("exit")) {
+            System.out.println("Program terminated.");
+            scanner.close();
+            System.exit(0);
         }
+
+        if (input.matches("[a-zA-Z]+")) {
+            throw new IllegalArgumentException("Input requires number only");
+        }
+
+        return Double.parseDouble(input);
     }
 
 }

@@ -37,7 +37,7 @@ public class ShoppingReceiptGenerator {
 
                 System.out.println("\n===== SHOPPING RECEIPT =====");
                 getShoppingReceipt(productName, productPrice, productQuantity, productDiscount, productVAT);
-
+                
             } catch(NumberFormatException e) {
                 System.out.println("Invalid input");
             }
@@ -69,17 +69,25 @@ public class ShoppingReceiptGenerator {
             System.exit(0);
         }
 
+        if (input.matches("\\d{1,4}")) {
+            throw new IllegalArgumentException("An input must only contain a numbers");
+        }
+
         int parsedInt = Integer.parseInt(input);
         return parsedInt;
     }
 
     private static double readDouble(Scanner scanner) {
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
 
         if (input.equalsIgnoreCase("Exit")) {
             System.out.println("Exiting...");
             scanner.close();
             System.exit(0);
+        }
+
+        if (input.matches("\\d{1,4}")) {
+            throw new IllegalArgumentException("An input must only contain a numbers");
         }
 
         double parsedDouble = Double.parseDouble(input);

@@ -17,8 +17,8 @@ public class BMICalculator {
 
                 System.out.println("\n===== BMI Status =====");
                 BMIvalidity(BMI);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
         }
 
@@ -33,14 +33,14 @@ public class BMICalculator {
         System.out.print(prompt);
         String input = scanner.nextLine().trim();
 
-        if (input.length() > 4) {
-            throw new NumberFormatException();
-        }
-
         if (input.equalsIgnoreCase("Exit")) {
             System.out.println("Exiting...");
             scanner.close();
             System.exit(0);
+        }
+
+        if (input.matches("\\d{1,4}")) {
+            throw new IllegalArgumentException("An input must only contains numbers");
         }
 
         return Double.parseDouble(input);

@@ -22,19 +22,18 @@ public class AgeCalculator {
 
                 System.out.println("\n===== AGE DESCRIPTION =====");
                 System.out.println("Age: " + age + "| " + isMinor);
-            } catch (DateTimeException e) {
-                System.out.println(e.getMessage());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage()); 
             }
         }
     }
 
     private static int calculateAge(int birthYear, int birthMonth, int birthDay) {
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
-        LocalDate dayToday = LocalDate.now(); 
 
-        int age = dayToday.getYear() - birthDate.getYear();
-        if (age > LocalDate.now().getYear()) {
-            throw new DateTimeException("Invalid input");
+        int age = LocalDate.now().getYear() - birthDate.getYear();
+        if (birthDate.isAfter(LocalDate.now())) {
+            throw new DateTimeException("Birthday cannot be greater than day today");
         }
 
         return age;
@@ -44,16 +43,17 @@ public class AgeCalculator {
         System.out.print(prompt);
         String input = scanner.nextLine().trim();
 
-        if (input.length() > 4) {
-            throw new DateTimeException("Invalid input");
-        }
-
         if (input.equalsIgnoreCase("exit")) {
             System.out.println("Program terminated.");
             scanner.close();
             System.exit(0);
         }
 
-        return Integer.parseInt(input);
+        if (!input.matches("\\d{1,4}")) {
+            throw new IllegalArgumentException("Illegal input, please try again\n");
+        }
+        
+        return Integer.parseInt(input);     
+        
     }
 }
