@@ -7,12 +7,24 @@ public class LoanCalculator {
 
         final Scanner scanner = new Scanner(System.in);
 
-        double loanAmount = readDouble(scanner, "Loan amount: ");
-        double interestRate = readDouble(scanner, "Interest rate: ");
-        double year = readDouble(scanner, "Year: ");
+        while (true) {
+            double loanAmount = readDouble(scanner, "Loan amount: ");
+            double interestRate = readDouble(scanner, "Interest rate: ");
+            double year = readDouble(scanner, "Year: ");
 
-        System.out.println("\n===== TRANSACTION =====");
-        getMonthlyPayment(loanAmount, interestRate, year);
+            System.out.println("\n===== TRANSACTION =====");
+            getMonthlyPayment(loanAmount, interestRate, year);
+
+            System.out.print("\nContinue(Yes/No)? ");
+            String line = scanner.nextLine().trim();
+
+
+            if (line.equalsIgnoreCase("No")) {
+                System.out.println("Exiting...");
+                scanner.close();
+                System.exit(0);
+            }
+        }
     }
 
     private static void getMonthlyPayment(double loanAmount, double interestRate, double year) {

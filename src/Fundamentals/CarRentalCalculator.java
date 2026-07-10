@@ -14,20 +14,21 @@ public class CarRentalCalculator {
         while (true) {
             try {
                 System.out.print("\nCar type: ");
-                String type = scanner.nextLine();
+                // Fixing bug...
 
                 System.out.print("Days: ");
-                int days = Integer.parseInt(scanner.nextLine());
+                // Fixing bug...
 
                 System.out.print("Insurance: ");
-                double insurance = Double.parseDouble(scanner.nextLine());
+                // Fixing bug...
 
                 System.out.print("Include driver: ");
                 boolean includeDriver = readBoolean(scanner);
 
-                String line = rentCar(type, days, insurance, includeDriver);
-                System.out.println("===== TRANSACTION =====");
-                System.out.println(line.concat("\n"));
+                // Fixing bug...
+                // String line = rentCar(type, days, insurance, includeDriver);
+                // System.out.println("\n===== TRANSACTION =====");
+                // System.out.println(line.concat("\n"));
 
                 System.out.print("Continue(Yes/No)? ");
                 String continueProcess = scanner.nextLine().trim();
@@ -44,6 +45,7 @@ public class CarRentalCalculator {
         }
     }
 
+    /*  Fixing bug....
     private static String rentCar(String type, int days, double insurance, boolean includeDriver) {
         double price = carPrice(type);
         double rentalFee = price*days;
@@ -59,49 +61,50 @@ public class CarRentalCalculator {
     }
 
     private static double carPrice(String type) {
-        CarType types = CarType.valueOf(type.toUpperCase().trim());
+        Scanner scanner = new Scanner(System.in);
+        String carTypes = scanner.nextLine().trim().toUpperCase();
 
-        switch(types) {
-            case CarType.SEDAN -> {
-                return 5000;
-            }
-            case CarType.SUV -> {
-                return 6000;
-            }
-            case CarType.HATCHBACK -> {
-                return 7000;
-            }
-            case CarType.COUPE -> {
-                return 8000;
-            }
-            case CarType.CONVERTIBLE -> {
-                return 9000;
-            }
-            case CarType.STATION_WAGON -> {
-                return 10000;
-            }
-            case CarType.MINIVAN -> {
-                return 11000;
-            }
-            case CarType.CROSSOVER -> {
-                return 12000;
-            } 
-            case CarType.SPORTS_CAR -> {
-                return 13000;
-            }
-            default -> System.out.println("Invalid input");
+        if (carTypes.equalsIgnoreCase("Exit")) {
+            System.out.println("Exiting...");
+            scanner.close();
+            System.exit(0);
         }
 
-        return 0;
+        try {
+            CarType types = CarType.valueOf(carTypes);
+
+            return switch (types) {
+                case SEDAN -> 5000;
+                case SUV -> 6000;
+                case HATCHBACK -> 7000;
+                case COUPE -> 8000;
+                case CONVERTIBLE -> 9000;
+                case STATION_WAGON -> 10000;
+                case MINIVAN -> 11000;
+                case CROSSOVER -> 12000;
+                case SPORTS_CAR -> 13000;
+            };
+
+        } catch (IllegalArgumentException e) {
+            throw new NumberFormatException();
+        }
+        
     }
+    */
 
     private static boolean readBoolean(Scanner scanner) {
         String input = scanner.nextLine().trim();
 
+        if (input.equalsIgnoreCase("Exit")) {
+            System.out.println("Exiting...");
+            scanner.close();
+            System.exit(0);
+        }
+
         if(input.equalsIgnoreCase("Yes")) {
             return true;
-        } else {
-            return false;
-        }
+        } 
+
+        return false;
     }
 }

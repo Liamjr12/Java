@@ -42,7 +42,7 @@ public class ATMSimulator {
                     default -> System.out.println("Invalid choices\n");
                 }
             } catch (NumberFormatException e) {
-                System.out.println(e.getMessage().concat("\n"));
+                System.out.println("Invalid input".concat("\n"));
             }
         }
 

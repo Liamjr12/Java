@@ -10,20 +10,15 @@ public class BMICalculator {
         final Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            double weight = readDouble(scanner, "\nWeight(kg): ");
-            double height = readDouble(scanner, "Height(cm): ");
-            double BMI = getBMI(weight, height);
+            try {
+                double weight = readDouble(scanner, "\nWeight(kg): ");
+                double height = readDouble(scanner, "Height(cm): ");
+                double BMI = getBMI(weight, height);
 
-            if (BMI >= 0.0 && BMI < 18.50) {
-                System.out.println("BMI: " + BMI + "; " + healthDescription.Underweight);
-            } else if (BMI >= 18.50 && BMI < 24.90) {
-                System.out.println("BMI: " + BMI + "; " + healthDescription.Normal);
-            } else if (BMI >= 24.90 && BMI < 29.90) {
-                System.out.println("BMI: " + BMI + "; " + healthDescription.Overweight);
-            } else if (BMI >= 29.90) {
-                System.out.println("BMI: " + BMI + "; " + healthDescription.Obese);
-            } else {
-                System.out.println("Invalid health description");
+                System.out.println("\n===== BMI Status =====");
+                BMIvalidity(BMI);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input");
             }
         }
 
@@ -38,19 +33,31 @@ public class BMICalculator {
         System.out.print(prompt);
         String input = scanner.nextLine().trim();
 
+        if (input.length() > 4) {
+            throw new NumberFormatException();
+        }
+
         if (input.equalsIgnoreCase("Exit")) {
             System.out.println("Exiting...");
             scanner.close();
             System.exit(0);
         }
 
-        try {
-            return Double.parseDouble(input);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input");
-        }
-
-        return 0.0;
+        return Double.parseDouble(input);
     }
+
+    private static void BMIvalidity(double BMI) {
+        if (BMI >= 0.0 && BMI < 18.50) {
+            System.out.println("BMI: " + BMI + "; " + healthDescription.Underweight);
+        } else if (BMI >= 18.50 && BMI < 24.90) {
+            System.out.println("BMI: " + BMI + "; " + healthDescription.Normal);
+        } else if (BMI >= 24.90 && BMI < 29.90) {
+            System.out.println("BMI: " + BMI + "; " + healthDescription.Overweight);
+        } else if (BMI >= 29.90) {
+            System.out.println("BMI: " + BMI + "; " + healthDescription.Obese);
+        } else {
+            System.out.println("Invalid health description");
+        }
+    } 
 
 }

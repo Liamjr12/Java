@@ -3,15 +3,27 @@ package Fundamentals;
 import java.util.Scanner;
 
 public class ElectricityBillCalculator {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
+
         final Scanner scanner = new Scanner(System.in);
 
-        double previousReading = readDouble(scanner, "\nPrevious reading: ");
-        double currentReading = readDouble(scanner, "Current reading: ");
-        double ratePerKwh = readDouble(scanner, "Rate per kWh: ");
+        while (true) {
+            double previousReading = readDouble(scanner, "\nPrevious reading: ");
+            double currentReading = readDouble(scanner, "Current reading: ");
+            double ratePerKwh = readDouble(scanner, "Rate per kWh: ");
 
-        System.out.println("\n===== ELECTRICITY BILL DETAILS =====");
-        getElectricityBill(previousReading, currentReading, ratePerKwh);
+            System.out.println("\n===== ELECTRICITY BILL DETAILS =====");
+            getElectricityBill(previousReading, currentReading, ratePerKwh);
+
+            System.out.print("\nContinue(Yes/No)? ");
+            String line = scanner.nextLine().trim();
+
+            if (line.equalsIgnoreCase("No")) {
+                System.out.println("Exiting...");
+                scanner.close();
+                System.exit(0);
+            }
+        }
     }
 
     private static void getElectricityBill(double previousReading, double currentReading, double ratePerKwh) {
