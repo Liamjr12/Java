@@ -156,7 +156,38 @@ public class StudentGradeManagementSystem {
     }
 
     private static void studentStatistics(String[] studentNames, double[] studentGrades) {
-        // Next update...
+        if (studentCount == 0) {
+            System.out.println("The student list is currently empty");
+            return;
+        }
+
+        String highestStudentName = studentNames[0];
+        double highestStudentGrade = studentGrades[0];
+
+        String lowestStudentName = studentNames[0];
+        double lowestStudentGrade = studentGrades[0];
+
+        double total = 0.0;
+
+        for (int i = 0; i < studentCount; i++) {
+            total += studentGrades[i];
+            
+            if (studentGrades[i] < lowestStudentGrade) {
+                lowestStudentGrade = studentGrades[i];
+                lowestStudentName = studentNames[i];
+            }
+
+            if (studentGrades[i] > highestStudentGrade) {
+                highestStudentGrade = studentGrades[i];
+                highestStudentName = studentNames[i];
+            }
+        }
+
+        double average = total / studentCount;
+
+        System.out.println("Highest: " + highestStudentName + " | " + highestStudentGrade);
+        System.out.println("Lowest: " + lowestStudentName + " | " + lowestStudentGrade);
+        System.out.println("Average: " + average);
     }
 
 }
