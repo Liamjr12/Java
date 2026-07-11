@@ -428,6 +428,23 @@ A looping statement that causes a section of a program to be repeated based on a
 
 ## **3. Branching Statement**
 These statements transfer control to another part of the program.
-* `break-statement` - used to break out of loop and can be labeled or unlabeled (<i><span style="color: red;">also breaks switch statement</span><i>)
+* `break-statement` - used to break out of loop and can be labeled or unlabeled (<i><span style="color: red;">also breaks switch statement</span></i>)
 * `continue-statement` - used in looping statement to skip current iteration of the loop and resume to the next iteration
 * `return-statement` - transfers the control to the caller of the method
+
+# **String**
+A sentence of characters that is considered as an object and have a specific methods. It contains <ins>String index</ins>, each characters has a specific position, for example character starts at index 0. <ins>String literal</ins>, a series of characters found enclosed in double quotes and considered as constand.
+
+## **Built-in String Methods**
+* **charAt()** - returns the character present in the specific index
+* **trim()** - removes the leading and trailing whitespaces from a string
+* **replace()** - changes the matching occurrences of a text or character in the string with new text or character
+* **equals()** - returns true if two strings are identical and false otherwise
+* **toLowerCase()/toUpperCase()** - changes all characters in the string to lowercase or uppercase
+* **length()** - returns the number of characters in the string
+* **concat()** - method returns a new string based on two concatenated or joined strings
+* **indexOf()** - returns the position in number of the text 
+* **compareTo()** - compares two strings based on their dictionary order
+
+# **Array**
+Represents data in a connected space in the computer. Basically, a colletion of element of the same type. There are types of arrays that needs to be study, these are the <ins>Single-Dimension Array</ins>, a list of same type variable where data moves in single dimension (left and right). And lastly, <ins>Multi-Dimension Array</ins>, it refers as an array of an array where data moves in multiple dimension. For example, Two-Dimesional Array, data moves in left-to-right and top-to-bottom.
