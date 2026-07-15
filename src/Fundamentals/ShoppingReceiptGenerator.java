@@ -31,7 +31,7 @@ public class ShoppingReceiptGenerator {
                     case 2 -> {
                         for (int i = 0; i < size; i++) {
                             System.out.println((i+1) + ".\tRECEIPT:");
-                            System.out.println( shoppingHistory[i]);
+                            System.out.println(shoppingHistory[i]);
                         }
                     }
                     case 3 -> {

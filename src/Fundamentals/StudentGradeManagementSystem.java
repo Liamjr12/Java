@@ -101,15 +101,24 @@ public class StudentGradeManagementSystem {
 
     private static void findStudent(Scanner scanner, String[] studentNames) {
         String studentName = readString(scanner, "Find name: ");
+        int left = 0;
+        int right = studentCount - 1;
 
-        for (int i = 0; i < studentCount; i++) {
-            if (!studentName.equalsIgnoreCase(studentNames[i])) {
-                System.out.println("A student has not been found");
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            int comparison = studentNames[mid].compareTo(studentName);
+
+            if (comparison == 0) {
+                System.out.println("Student name has been found");
                 return;
-            } 
+            } else if (comparison < 0) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
         }
-
-        System.out.println("A student has been found");
+        
+        System.out.println("Student name is not found in the list");
     }
 
     private static void updateStudentStatus(Scanner scanner, String[] studentNames, double[] studentGrades) {
@@ -189,5 +198,4 @@ public class StudentGradeManagementSystem {
         System.out.println("Lowest: " + lowestStudentName + " | " + lowestStudentGrade);
         System.out.println("Average: " + average);
     }
-
 }
