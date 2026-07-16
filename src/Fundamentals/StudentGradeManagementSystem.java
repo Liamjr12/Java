@@ -55,7 +55,7 @@ public class StudentGradeManagementSystem {
 
     private static void addStudent(Scanner scanner, String[] studentNames, int[] studentAges, double[] studentGrades) {
         if (studentCount >= studentNames.length) {
-            throw new IllegalArgumentException("The student list is full");
+            throw new RuntimeException("The student list is full");
         }
 
         String studentName = readString(scanner, "Student name: ");
@@ -86,8 +86,7 @@ public class StudentGradeManagementSystem {
 
     private static void displayStudents(String[] studentNames, int[] studentAges, double[] studentGrades) {
         if (studentCount == 0) {
-            System.out.println("The list is currently unoccupied");
-            return;
+            throw new RuntimeException("The list is currently unoccupied");
         }
 
         System.out.println("\n********** STUDENTS STATUS LIST **********");
@@ -101,6 +100,7 @@ public class StudentGradeManagementSystem {
 
     private static void findStudent(Scanner scanner, String[] studentNames) {
         String studentName = readString(scanner, "Find name: ");
+
         int left = 0;
         int right = studentCount - 1;
 
@@ -137,15 +137,13 @@ public class StudentGradeManagementSystem {
 
     private static void removeStudent(Scanner scanner, String[] studentNames, int[] studentAges, double[] studentGrades) {
         if (studentNames.length < studentCount) {
-            System.out.println("The student list is already empty");
-            return;
+            throw new RuntimeException("The student list is already empty");
         }
 
         String studentName = readString(scanner, "Find name: ");
         for (int i = 0; i < studentCount; i++) {
             if (!studentName.equalsIgnoreCase(studentNames[i])) {
-                System.out.println("A student has not been found");
-                return;
+                throw new RuntimeException("A student has not been found");
             } 
         }
 

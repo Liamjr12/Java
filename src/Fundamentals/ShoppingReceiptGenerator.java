@@ -152,5 +152,4 @@ public class ShoppingReceiptGenerator {
         System.out.println("Receipt has not been found");
         return false;
     }
-
 }
