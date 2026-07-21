@@ -447,4 +447,6 @@ A sentence of characters that is considered as an object and have a specific met
 * **compareTo()** - compares two strings based on their dictionary order
 
 # **Array**
-Represents data in a connected space in the computer. Basically, a colletion of element of the same type. There are types of arrays that needs to be study, these are the <ins>Single-Dimension Array</ins>, a list of same type variable where data moves in single dimension (left and right). And lastly, <ins>Multi-Dimension Array</ins>, it refers as an array of an array where data moves in multiple dimension. For example, Two-Dimesional Array, data moves in left-to-right and top-to-bottom.
+Represents data in a connected space in the computer. Basically, a colletion of element of the same type. There are types of arrays that needs to be study, these are the: <br>
+* **Single-Dimension Array** - a list of same type variable where data moves in single dimension (left and right).
+* **Multi-Dimension Array** -  it refers as an array of an array where data moves in multiple dimension. For example, Two-Dimesional Array, data moves in left-to-right and top-to-bottom.
