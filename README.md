@@ -10,7 +10,7 @@ A software package that provides libraries and other resources that Java program
 #### **2. Java Virtual Machine**
 Machine that runs Java application as a run-time engine:
 * `compliers` - convers your writen instruction into binary program before execution. Then, the CPU executes directly later
-* `interpreter` - takes the source code, then translates into machine instruction (<i><span style="color: red;">in binary</span></i>) and execute the code to the CPU line-by-line in `real-time`
+* `interpreter` - takes the source code, then translates into machine instruction (<ins><span style="color: red;">in binary</span></ins>) and execute the code to the CPU line-by-line in `real-time`
 
 #### **3. Java Application Programming Interface**
 Built-in Java functions that can be used by the users
@@ -406,7 +406,7 @@ The data processed by the computer software that can be directed at printers, sc
 Can be any form such as output on screen, a disk, a printer, or even in a form of movement found in a robots.
 
 # **Scanner package**
-An import statement `import java.util.Scanner;` is added to use predefined method for inputs. <br> On the other hand, `System.out` is the console output, the output sent to the console. <br> While the `println` is the statement (<i><span style="color: red;">function</span></i>) that display the value to be shown on the screen or monitor.
+An import statement `import java.util.Scanner;` is added to use predefined method for inputs. <br> On the other hand, `System.out` is the console output, the output sent to the console. <br> While the `println` is the statement (<ins><span style="color: red;">function</span></ins>) that display the value to be shown on the screen or monitor.
 
 # **Java.lang**
 It includes the system and math classes. <br> This package is automatically imported into all java programs so `import` statement is not needed to use the functions of the lang package.
@@ -424,16 +424,16 @@ A control flow construct that directs the program to execute specific blocks of 
 A looping statement that causes a section of a program to be repeated based on a specific number of times. The loop continues until the condition becomes false.
 * `while-statement` - loop that continues until the evaluating condition becomes false
 * `do-while statement` - loop that list the contion after the statement to be executed
-* `for-statement` - used when the iteration are known in advance (<i><span style="color: red;">iteration refers to the number of times the loop body is executed</span></i>)
+* `for-statement` - used when the iteration are known in advance (<ins><span style="color: red;">iteration refers to the number of times the loop body is executed</span></ins>)
 
 ## **3. Branching Statement**
 These statements transfer control to another part of the program.
-* `break-statement` - used to break out of loop and can be labeled or unlabeled (<i><span style="color: red;">also breaks switch statement</span></i>)
+* `break-statement` - used to break out of loop and can be labeled or unlabeled (<ins><span style="color: red;">also breaks switch statement</span></ins>)
 * `continue-statement` - used in looping statement to skip current iteration of the loop and resume to the next iteration
 * `return-statement` - transfers the control to the caller of the method
 
 # **String**
-A sentence of characters that is considered as an object and have a specific methods. It contains <ins>String index</ins>, each characters has a specific position, for example character starts at index 0. <ins>String literal</ins>, a series of characters found enclosed in double quotes and considered as constand.
+A sentence of characters that is considered as an object and have a specific methods. It contains **String index*, each characters has a specific position, for example character starts at index 0. **String literal*, a series of characters found enclosed in double quotes and considered as constand.
 
 ## **Built-in String Methods**
 * **charAt()** - returns the character present in the specific index
@@ -448,5 +448,5 @@ A sentence of characters that is considered as an object and have a specific met
 
 # **Array**
 Represents data in a connected space in the computer. Basically, a colletion of element of the same type. There are types of arrays that needs to be study, these are the: <br>
-* **Single-Dimension Array** - a list of same type variable where data moves in single dimension (left and right).
+* **Single-Dimension Array** - a list of same type variable where data moves in single dimension (<ins>left and right</ins>).
 * **Multi-Dimension Array** -  it refers as an array of an array where data moves in multiple dimension. For example, Two-Dimesional Array, data moves in left-to-right and top-to-bottom.
