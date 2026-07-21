@@ -433,7 +433,7 @@ These statements transfer control to another part of the program.
 * `return-statement` - transfers the control to the caller of the method
 
 # **String**
-A sentence of characters that is considered as an object and have a specific methods. It contains **String index*, each characters has a specific position, for example character starts at index 0. **String literal*, a series of characters found enclosed in double quotes and considered as constand.
+A sentence of characters that is considered as an object and have a specific methods. It contains *String index*, each characters has a specific position, for example character starts at index 0. *String literal*, a series of characters found enclosed in double quotes and considered as constand.
 
 ## **Built-in String Methods**
 * **charAt()** - returns the character present in the specific index
