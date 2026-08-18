@@ -210,7 +210,6 @@ public class CarRentalCalculator {
             }
         }
 
-        // Handle the last group
         if (currentCount > maxCount) {
             maxCount = currentCount;
             mostRented = sortedCars[sortedCars.length - 1];
