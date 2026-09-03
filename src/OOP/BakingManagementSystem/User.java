@@ -1,20 +1,11 @@
-/*package OOP.BakingManagementSystem;
+package OOP.BakingManagementSystem;
 
 import java.util.*;
 
 public class User {
     final Scanner scanner = new Scanner(System.in);
-    private final Bank bank;
 
-    public User(Bank bank) {
-        this.bank = bank;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void startOperation(Bank bank) {
+    public void startOperation(Account account, Bank bank) {
         while (true) {
             try {
                 operations();
@@ -22,13 +13,13 @@ public class User {
                 int choice = Integer.parseInt(scanner.nextLine().trim());
 
                 switch (choice) {
-                    case 1 -> System.out.println("Balance: Php" + bank.getBalance());
-                    case 2 -> withdraw(bank);
-                    case 3 -> deposit(bank);
-                    case 4 -> transfer(bank);
-                    case 5 -> loan(bank);
-                    case 6 -> System.out.println("Loan balance: Php" + bank.getLoan());
-                    case 7 -> payLoan(bank);
+                    case 1 -> System.out.println("Balance: Php" + account.getBalance());
+                    case 2 -> withdraw(account);
+                    case 3 -> deposit(account);
+                    case 4 -> transfer(account, bank);
+                    case 5 -> makeLoan(account);
+                    case 6 -> System.out.println("Loan balance: Php" + account.getLoan());
+                    case 7 -> payLoan(account);
                     case 8 -> {
                         System.out.print("Leaving...");
                         return;
@@ -56,63 +47,76 @@ public class User {
         """);
     }
 
-    private void withdraw(Bank bank) {
+    private void withdraw(Account account) {
         try {
             System.out.print("Enter amount: ");
             double amount = scanner.nextDouble();
-            bank.withdraw(amount);
+
+            account.withdraw(amount);
             System.out.println("The money has been successfully withdrawn");
+
         } catch (InputMismatchException e) {
             System.out.println("The input only accepts numbers");
         }
     }
 
-    private void deposit(Bank bank) {
+    private void deposit(Account account) {
         try {
             System.out.print("Enter amount: ");
             double amount = scanner.nextDouble();
-            bank.deposit(amount);
+
+            account.deposit(amount);
             System.out.println("The money has been successfully deposited");
+
         } catch (InputMismatchException e) {
             System.out.println("The input only accepts numbers");
         }
     }
 
-    private void transfer(Bank bank) {
+    private void transfer(Account sender, Bank bank) {
         try {
-            System.out.print("Enter Account Number: ");
+            System.out.print("Receiver Account Number: ");
             int accountNumber = scanner.nextInt();
+
             System.out.print("Enter amount: ");
             double amount = scanner.nextDouble();
 
-            Account account = bank.findAccount(accountNumber);
-            bank.transfer(account, amount);
+            Account receiver = bank.findAccount(accountNumber);
+            if (receiver == null) {
+                throw new IllegalArgumentException("Receiver account not found.");
+            }
 
+            sender.transfer(receiver, amount);
             System.out.println("Transfer completed");
+
         } catch (InputMismatchException e) {
             System.out.println("The input you've typed is invalid. Please try again");
         }
     }
 
-    private void loan(Bank bank) {
+    private void makeLoan(Account account) {
         try {
             System.out.print("Enter amount: ");
             double amount = scanner.nextInt();
-            bank.setLoan(amount);
-            System.out.println("You've successfully loaned Php" + bank.getLoan() + ", please pay it on time.");
+
+            account.makeLoan(amount);
+            System.out.println("You've successfully loaned Php" + account.getLoan() + ", please pay it on time.");
+
         } catch (InputMismatchException e) {
             System.out.println("The input you've typed is invalid. Please try again");
         }
     }
 
-    private void payLoan(Bank bank) {
+    private void payLoan(Account account) {
         try {
             System.out.print("Enter amount: ");
             double amount = scanner.nextDouble();
-            bank.payLoan(amount);
+
+            account.payLoan(amount);
             System.out.println("You've successfully paid the load. Check for the loan balance to confirm");
+
         } catch (InputMismatchException e) {
             System.out.println("The input you've typed is invalid. Please try again");
         }
     }
-}*/
+}

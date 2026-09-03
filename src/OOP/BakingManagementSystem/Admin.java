@@ -1,18 +1,9 @@
-/*package OOP.BakingManagementSystem;
+package OOP.BakingManagementSystem;
 
 import java.util.*;
 
 public class Admin {
-    final Scanner scanner = new Scanner(System.in);
-    private final Bank bank;
-
-    public Admin(Bank bank) {
-        this.bank = bank;
-    }
-
-    public Bank getBank() {
-        return bank;
-    }
+    private final Scanner scanner = new Scanner(System.in);
 
     public void startOperation(Bank bank) {
         while (true) {
@@ -55,10 +46,16 @@ public class Admin {
         try {
             System.out.print("Account Number: ");
             int accountNumber = scanner.nextInt();
-            System.out.print("Account Password: ");
-            int accountPassword = scanner.nextInt();
+            scanner.nextLine();
 
-            bank.addAccount(accountNumber, accountPassword);
+            System.out.print("Account Password: ");
+            String accountPassword = scanner.nextLine();
+
+            Map<Integer, String> account = new HashMap<>();
+            account.put(accountNumber, accountPassword);
+            bank.addAccount(account);
+            System.out.println("The account is successfully added to the bank system.");
+
         } catch (InputMismatchException e) {
             System.out.println("The input only accepts numbers");
         }
@@ -68,7 +65,12 @@ public class Admin {
         try {
             System.out.print("Enter Account Number: ");
             int accountNumber = scanner.nextInt();
-            bank.removeAccount(accountNumber);
+            scanner.nextLine();
+
+            Account account = bank.findAccount(accountNumber);
+            bank.removeAccount(account);
+            System.out.println("The account is successfully removed.");
+
         } catch (InputMismatchException e) {
             System.out.println("The input only accepts numbers");
         }
@@ -78,12 +80,18 @@ public class Admin {
         try {
             System.out.print("Enter Account Number: ");
             int accountNumber = scanner.nextInt();
-            Account a = bank.findAccount(accountNumber);
 
+            Account a = bank.findAccount(accountNumber);
+            if (a == null) {
+                System.out.println("Account not found.");
+            }
+            else {
+                System.out.println("Account " + a.getAccountNumber() + " has been found!");
+            }
             System.out.println("Account " + a + " has been found!");
+
         } catch (InputMismatchException e) {
             System.out.println("The input only accepts numbers");
         }
     }
 }
-*/

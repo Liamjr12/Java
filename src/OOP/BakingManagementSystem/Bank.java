@@ -2,7 +2,7 @@ package OOP.BakingManagementSystem;
 
 import java.util.*;
 
-public class Bank extends Account {
+public class Bank {
     private List<Account> accountList = new ArrayList<>();
 
     public Bank(List<Account> accountList) {
@@ -13,71 +13,49 @@ public class Bank extends Account {
 
     public void displayAccountList() {
         int i = 0;
-
-        for (Account a:accountList) {
+        for (Account a : accountList) {
             System.out.println((i++) + ". " + a.getAccountNumber());
         }
     }
 
-    public void addAccount(Map<Integer, String> accountDetails) {
-        if (accountDetails==null || accountDetails.isEmpty()) {
-            throw new IllegalArgumentException("Account details cannot be empty.");
+    public void addAccount(Map<Integer, String> account) {
+        if (account==null) {
+            throw new IllegalArgumentException("The account details cannot be empty.");
         }
 
-        int newAccountNumber = accountDetails.keySet().iterator().next();
-
-        for (Account account : accountList) {
-            if (account.getAccountNumber() == newAccountNumber) {
-                throw new IllegalArgumentException("The account number already exists. Please try again.");
+        for (Account a : accountList) {
+            if (a.getAccountNumber()==account.keySet().iterator().next()) {
+                throw new IllegalArgumentException("The account already exist in the bank system");
             }
         }
 
-        Account account = new Account(accountDetails);
-        accountList.add(account);
+        Account newAccount = new Account(account);
+        accountList.add(newAccount);
     }
 
-    public void removeAccount(Map<Integer, String> accountDetails) {
-        if (accountList == null || accountList.isEmpty()) {
-            throw new IllegalArgumentException("Account list is empty.");
+    public void removeAccount(Account account) {
+        if (account==null) {
+            throw new IllegalArgumentException("The account details cannot be empty.");
         }
 
-        if (accountDetails == null || accountDetails.isEmpty()) {
-            throw new IllegalArgumentException("Account details cannot be empty.");
-        }
-
-        int accountNumber = accountDetails.keySet().iterator().next();
-        Iterator<Account> iterator = accountList.iterator();
-
-        while (iterator.hasNext()) {
-            Account account = iterator.next();
-
-            if (account.getAccountNumber() == accountNumber) {
-                iterator.remove();
+        Iterator<Account> accounts = accountList.iterator();
+        while (accounts.hasNext()) {
+            Account a = accounts.next();
+            if (a.getAccountNumber()==account.getAccountNumber()) {
+                accounts.remove();
                 return;
             }
         }
 
-        throw new IllegalArgumentException("Account number does not exist.");
-    }
-
-    public boolean findAccount(int accountNumber, String accountPassword) {
-        for (Account a : accountList) {
-            if (accountNumber == a.getAccountNumber()
-                    && accountPassword.equals(a.getAccountPassword())) {
-                return true;
-            }
-        }
-
-        return false;
+        throw new IllegalArgumentException("Account details is not in the bank system");
     }
 
     public Account findAccount(int accountNumber) {
         for (Account a : accountList) {
-            if (accountNumber == a.getAccountNumber()) {
+            if (a.getAccountNumber()==accountNumber) {
                 return a;
             }
         }
-
         return null;
     }
 }
