@@ -1,14 +1,15 @@
 package OOP.BakingManagementSystem;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class Account {
-    private int accountNumber;
-    private int accountPassword;
+    private Map<Integer, String> accountDetails = new HashMap<>();
     private double loan;
     private double balance;
 
-    public Account(int accountNumber, int accountPassword) {
-        this.accountNumber = accountNumber;
-        this.accountPassword = accountPassword;
+    public Account(Map<Integer, String> accountDetails) {
+        this.accountDetails = accountDetails;
         this.loan = 0;
         this.balance = 0;
     }
@@ -16,11 +17,17 @@ public class Account {
     public Account() {}
 
     public int getAccountNumber() {
-        return accountNumber;
+        for (int key:accountDetails.keySet()) {
+            return key;
+        }
+        return 0;
     }
 
-    public int getAccountPassword() {
-        return accountPassword;
+    public String getAccountPassword() {
+        for (String value:accountDetails.values()) {
+            return value;
+        }
+        return null;
     }
 
     public double getLoan() {
@@ -31,72 +38,78 @@ public class Account {
         return balance;
     }
 
-    public void setLoan(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Loan amount must be greater than 0.");
-        }
-
-        if (loan + amount > 10_000) {
-            throw new IllegalArgumentException("You cannot borrow more than Php10,000.");
-        }
-
-        loan += amount;
-        balance += amount;
+    private void applyInterest() {
+        double interest = balance*0.03;
+        balance+=interest;
     }
 
     public void deposit(double amount) {
-        if (amount <= 0) {
+        if (amount<=0) {
             throw new IllegalArgumentException("Deposit amount must be greater than 0.");
         }
 
-        double interest = balance * 0.03;
-        balance = (balance + amount) - interest;
-    }
+        balance+=amount;
 
-    public void deposit(Account account, double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be greater than 0.");
+        if (amount>=10_000) {
+            applyInterest();
         }
-
-        double interest = balance * 0.03;
-        account.balance += amount;
     }
 
     public void withdraw(double amount) {
-        if (balance <= 0) {
+        if (amount<=0) {
+            throw new IllegalArgumentException("Deposit amount must be greater than 0.");
+        }
+
+        if (balance<amount) {
             throw new IllegalArgumentException("You can no longer extract a money from the bank");
         }
 
-        double interest = balance * 0.03;
-        balance = (balance - amount) - interest;
+        balance-=amount;
+
+        if (amount>=10_000) {
+            applyInterest();
+        }
     }
 
     public void transfer(Account account, double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Amount to be transfer must be greater than 0.");
-        }
-
-        if (balance < amount) {
-            throw new IllegalArgumentException("Insufficient balance to transfer the amount");
-        }
-
         withdraw(amount);
-        deposit(account, amount);
+        account.deposit(amount);
+
+        if (amount>=10_000) {
+            applyInterest();
+        }
+    }
+
+    public void makeLoan(double amount) {
+        if (amount<=0) {
+            throw new IllegalArgumentException("Loan amount must be greater than 0.");
+        }
+
+        if (loan+amount>10_000) {
+            throw new IllegalArgumentException("You cannot have more than Php10,000 in outstanding loans.");
+        }
+
+        loan+=amount;
+        balance+=amount;
     }
 
     public void payLoan(double amount) {
-        if (amount <= 0) {
+        if (amount<=0) {
             throw new IllegalArgumentException("Payment amount must be greater than 0.");
         }
 
-        if (amount > loan) {
-            double excess = amount - loan;
-            balance += excess;
-            loan = 0;
-        } else {
-            loan -= amount;
+        if (balance<amount) {
+            throw new IllegalArgumentException("Insufficient balance to pay the loans");
         }
 
-        balance -= amount;
+        if (amount>loan) {
+            double excess = amount-loan;
+            balance-=loan;
+            loan = 0;
+            balance+=excess;
+        } else {
+            balance-=amount;
+            loan-=amount;
+        }
     }
 }
