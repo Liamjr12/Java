@@ -1,116 +1,87 @@
 package OOP.BakingManagementSystem;
 
+import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
 
 public class Account {
-    private Map<Integer, String> accountDetails = new HashMap<>();
-    private double loan;
+    private static final double TRANSFER_LIMIT = 100_000;
     private double balance;
+    private Transaction transaction;
+    private Map<Integer, String> account = new HashMap<>();
 
-    public Account(Map<Integer, String> accountDetails) {
-        this.accountDetails = accountDetails;
-        this.loan = 0;
-        this.balance = 0;
+    public Account(Map<Integer, String> account, double balance) {
+        if (account == null || account.isEmpty()) {
+            throw new IllegalArgumentException("The account details cannot be empty.");
+        }
+
+        if (balance<0) {
+            throw new IllegalArgumentException("The balance cannot be less than 0.");
+        }
+
+        this.account = account;
+        this.balance = balance;
     }
 
-    public Account() {}
+    public Account(){}
 
     public int getAccountNumber() {
-        for (int key:accountDetails.keySet()) {
-            return key;
-        }
-        return 0;
-    }
-
-    public String getAccountPassword() {
-        for (String value : accountDetails.values()) {
-            return value;
-        }
-        return null;
-    }
-
-    public double getLoan() {
-        return loan;
+        return account.keySet().iterator().next();
     }
 
     public double getBalance() {
         return balance;
     }
 
-    private void applyInterest() {
-        double interest = balance*0.03;
-        balance+=interest;
-    }
-
     public void deposit(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be greater than 0.");
+        if (amount<=0) {
+            throw new IllegalArgumentException("You cannot deposit an amount less than or equal to 0.");
         }
 
         balance+=amount;
-
-        if (amount >= 10_000) {
-            applyInterest();
-        }
     }
 
     public void withdraw(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be greater than 0.");
+        if (amount<=0) {
+            throw new IllegalArgumentException("You cannot withdraw an amount less than or equal to 0.");
         }
 
-        if (balance < amount) {
-            throw new IllegalArgumentException("You can no longer extract a money from the bank");
+        if (balance<amount) {
+            throw new IllegalArgumentException("You cannot withdraw a money more than your current balance.");
         }
 
         balance-=amount;
-
-        if (amount >= 10_000) {
-            applyInterest();
-        }
     }
 
-    public void transfer(Account account, double amount) {
-        withdraw(amount);
-        account.deposit(amount);
-
-        if (amount >= 10_000) {
-            applyInterest();
+    public void transfer(Account receiver, double amount) {
+        if (receiver == null) {
+            throw new IllegalArgumentException("The receiver's credentials does not exist in the bank system");
         }
+
+        if (receiver == this) {
+            throw new IllegalArgumentException("You cannot send your money to your own self. Please try again.");
+        }
+
+        if (amount<=0) {
+            throw new IllegalArgumentException("You cannot transfer a money less than or equal to 0.");
+        }
+
+        if (balance<amount) {
+            throw new IllegalArgumentException("You cannot transfer a money more than your current balance.");
+        }
+
+        if (amount>TRANSFER_LIMIT) {
+            throw new IllegalArgumentException("You can only transfer Php100,000 per session. Please try again.");
+        }
+
+        balance-=amount;
+        receiver.balance+=amount;
+
+        transaction.transferTransactions(ACCOUNT_TYPE.SENDER, amount);
+        transaction.transferTransactions(ACCOUNT_TYPE.RECEIVER, amount);
     }
 
-    public void makeLoan(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Loan amount must be greater than 0.");
-        }
-
-        if (loan+amount > 10_000) {
-            throw new IllegalArgumentException("You cannot have more than Php10,000 in outstanding loans.");
-        }
-
-        loan+=amount;
-        balance+=amount;
-    }
-
-    public void payLoan(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Payment amount must be greater than 0.");
-        }
-
-        if (balance < amount) {
-            throw new IllegalArgumentException("Insufficient balance to pay the loans");
-        }
-
-        if (amount > loan) {
-            double excess = amount-loan;
-            balance-=loan;
-            loan = 0;
-            balance+=excess;
-        }
-        else {
-            balance-=amount;
-            loan-=amount;
-        }
+    public void displayTransactions() {
+        transaction.displayTransactions();
     }
 }
