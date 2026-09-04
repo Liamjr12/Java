@@ -1,7 +1,5 @@
 package  OOP.BakingManagementSystem;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -20,7 +18,7 @@ public class Main {
                 2. Admin login
                 3. Exit
                 """);
-                System.out.print("Choice: ");
+                System.out.print("\nChoice: ");
                 int choice = Integer.parseInt(scanner.nextLine().trim());
 
                 switch (choice) {
