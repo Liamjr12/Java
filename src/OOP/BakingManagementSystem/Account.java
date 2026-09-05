@@ -2,17 +2,21 @@ package OOP.BakingManagementSystem;
 
 import java.util.Scanner;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Account {
     private static final double TRANSFER_LIMIT = 100_000;
     private double balance;
     private Transaction transaction;
-    private Map<Integer, String> account = new HashMap<>();
+    private Map<Integer, String> account = new LinkedHashMap<>();
 
     public Account(Map<Integer, String> account, double balance) {
         if (account == null || account.isEmpty()) {
             throw new IllegalArgumentException("The account details cannot be empty.");
+        }
+
+        if (account.keySet().iterator().next()<=0) {
+            throw new IllegalArgumentException("Account number must be unique positive number");
         }
 
         if (balance<0) {
@@ -39,6 +43,7 @@ public class Account {
         }
 
         balance+=amount;
+        transaction.depositTransactions(amount);
     }
 
     public void withdraw(double amount) {
@@ -51,6 +56,7 @@ public class Account {
         }
 
         balance-=amount;
+        transaction.withdrawTransactions(amount);
     }
 
     public void transfer(Account receiver, double amount) {
@@ -78,7 +84,7 @@ public class Account {
         receiver.balance+=amount;
 
         transaction.transferTransactions(ACCOUNT_TYPE.SENDER, amount);
-        transaction.transferTransactions(ACCOUNT_TYPE.RECEIVER, amount);
+        receiver.transaction.transferTransactions(ACCOUNT_TYPE.RECEIVER, amount);
     }
 
     public void displayTransactions() {
