@@ -15,10 +15,6 @@ public class Account {
             throw new IllegalArgumentException("The account details cannot be empty.");
         }
 
-        if (account.keySet().iterator().next()<=0) {
-            throw new IllegalArgumentException("Account number must be unique positive number");
-        }
-
         if (balance<0) {
             throw new IllegalArgumentException("The balance cannot be less than 0.");
         }

@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Bank {
-    private List<Account> accountList = new ArrayList<>();
+    private static List<Account> accountList = new ArrayList<>();
 
     public void displayAccounts() {
-        System.out.println("*******ACCOUNT LIST*******");
         int i = 0;
         for (Account a : accountList) {
             System.out.println((i++) + ". " + a);
@@ -49,7 +48,7 @@ public class Bank {
         System.out.println("Account has been found: " + account.getAccountNumber());
     }
 
-    private Account isFound(int accountNumber) {
+    protected static Account isFound(int accountNumber) {
         if (accountNumber<0) {
             throw new IllegalArgumentException("No less than 0 account number exist in the bank system.");
         }

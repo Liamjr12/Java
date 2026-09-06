@@ -8,7 +8,6 @@ public class Transaction extends Account {
     private List<String> transactions = new ArrayList<>();
 
     public void displayTransactions() {
-        System.out.println("*******TRANSACTIONS*******");
         int i = 0;
         for (String t : transactions) {
             System.out.println((i++) + "." + t);
